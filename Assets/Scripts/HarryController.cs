@@ -15,7 +15,6 @@ public class HarryController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
 
     private Vector3 originalSize;
-    private Boolean isSmall = false;
     private static readonly int Speed = Animator.StringToHash("Speed");
 
     void Start()
@@ -29,28 +28,8 @@ public class HarryController : MonoBehaviour
         Rotate(GetRotationInput());
     }
 
-    public bool GetIsSmall()
-    {
-        return isSmall;
-    }
-
-    public void SetIsSmall(Boolean value)
-    {
-        isSmall = value;
-    }
-
-    public void TransformSize()
-    {
-        if (isSmall)
-        {
-            transform.localScale = originalSize;
-            SetIsSmall(false);
-        }
-        else
-        {
-            transform.localScale /= 2f;
-            SetIsSmall(true);
-        }
+    public Vector3 GetOriginalSize() {
+        return originalSize;
     }
 
     private void OnApplicationFocus(bool hasFocus)
